@@ -1,0 +1,12 @@
+.refresh_class{
+    position:absolute;
+    float: left;
+}
+
+.nametable{
+    margin: 10px;
+    width:60%;
+    max-height:500px;
+    min-height: 200px;;
+    overflow: auto;
+}
