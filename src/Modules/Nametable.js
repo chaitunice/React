@@ -8,7 +8,8 @@ class Nametable extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: {}
+      data: {},
+      cols: []
       // refresh:0
     };
     this.refreshme = this.refreshme.bind(this)
@@ -22,40 +23,38 @@ class Nametable extends Component {
   axios
         .get('http://localhost:5000/emps')
         .then(response => {
-          this.setState(  {data: response.data.data} ); 
+          this.setState(  {data: response.data.data, 
+                            cols : response.data.cols} ); 
           // console.log('Response saved in state ')
-          // console.log(this.state.data)
+          // console.log(this.state.cols)
         })
-    // console.log('Mydata:')
-    // console.log(this.state.data)
+    console.log('Mydata:')
+    console.log(this.state.data)
   }
 
-
 render() {
-  var header = (<Table.Header>
+  let cols = this.state.cols
+  const headers = cols.map( (row) => <Table.HeaderCell>{row}</Table.HeaderCell>);
+
+
+var header = (<Table.Header>
   <Table.Row>
-    <Table.HeaderCell>Name</Table.HeaderCell>
-    <Table.HeaderCell>Sex</Table.HeaderCell>
-    <Table.HeaderCell>Age</Table.HeaderCell>
+    {headers}
   </Table.Row>
 </Table.Header>)
 
-let rows = []
-  // console.log('Length of mydata' + this.state.data.length)
+let rows = this.state.data
   
   if(this.state.data.length > 0) {
-    for(let i=0; i< this.state.data.length; i++){
-      rows.push( <Table.Row>
-        <Table.Cell>{this.state.data[i][0]}</Table.Cell>
-        <Table.Cell>{this.state.data[i][1]}</Table.Cell>
-        <Table.Cell>{this.state.data[i][2]}</Table.Cell>
-      </Table.Row>)
-    }
+
+      var table_rows = rows.map( (row_data) => 
+      
+        <Table.Row>{row_data.map( (cell) => <Table.Cell>{cell}</Table.Cell>)}</Table.Row>)
 
   }
   else
     {
-      rows.push( <Table.Row>
+      table_rows = ( <Table.Row>
         <Table.Cell>No Data</Table.Cell>
       </Table.Row>)
     }
@@ -74,7 +73,7 @@ let rows = []
         <Table>
         {header}
         <Table.Body>
-        {rows}
+        {table_rows}
         </Table.Body></Table>
        </div>
     </div>

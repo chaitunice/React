@@ -8,8 +8,6 @@ ls = []
 for row in rs:
     ls.append(row)
 
-a = ''
-for i in ls:
-    a = a + str(i)
+a = ''.join(str(ls))
 
 print(a)

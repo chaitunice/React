@@ -10,16 +10,24 @@ CORS(app)
 def hello():
     conn = cx_Oracle.connect("system", "hello", "localhost:1521/ORCL")
     cur = conn.cursor()
-    rs = cur.execute("select * from emp")
+    rs = cur.execute("select * from employees")
     ls = []
     for row in rs:
         ls.append(row)
+
+    rs1 = cur.execute("SELECT column_name \
+        FROM USER_TAB_COLUMNS   \
+WHERE table_name = 'EMPLOYEES'")
+
+    cols = []
+    for row in rs1:
+        cols.append(row)
 
     # a = ''
     # for i in ls:
     #     a = a + str(i)
 
-    return jsonify(data=ls)
+    return jsonify(data=ls, cols = cols)
 
 @app.route("/emps/addUser", methods=["POST"])
 def addUser():

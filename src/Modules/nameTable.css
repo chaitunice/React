@@ -5,7 +5,7 @@
 
 .nametable{
     margin: 10px;
-    width:60%;
+    width:auto;
     max-height:500px;
     min-height: 200px;;
     overflow: auto;
