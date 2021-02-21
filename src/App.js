@@ -9,13 +9,13 @@ function App() {
 
 return(
   <div class='wholeframe'>
-    <div class='menuitems'><MyMenu /></div>
-    <div>
+    <div class='menuframe'><MyMenu /></div>
+    <div class='content-frame'>
       <div><Nametable /></div>
       <br></br>
-    </div>
+    
     <div><AddUser /></div>
-    asdfasfd
+    </div>
 
   </div>
 )

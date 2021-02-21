@@ -18,8 +18,10 @@ body{
   border-radius: 15px;
 }
 
-.menuitems{
+.menuframe{
   float:left;
   margin-right: 20px;
+  background:black;
+  height: 100vh;
 }
 
