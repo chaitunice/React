@@ -4,9 +4,22 @@
   position: relative;
   margin: 10px;
 }
+body{
+  background-image: './pics/back.jpg';
+}
 
 .wholeframe
 {
   margin:10px;
+  width:auto;
+  height: 100vh;
+  background-image: url('./pics/back.jpg');
+  background-size: cover;
+  border-radius: 15px;
+}
+
+.menuitems{
+  float:left;
+  margin-right: 20px;
 }
 
