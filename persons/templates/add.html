@@ -1,0 +1,21 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+    <title>Add CSS Internally in CSS Tutorial</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'cssfiles/mycss.css' %}"/>
+    </head>
+<body>
+<form action="addperson/" method="POST">
+    {% csrf_token %}
+<h2> Add Person:</h2>
+<table>
+    <tr>
+        <td><input type="text" placeholder="Firstname" name="fname" /></td>
+        <td><input type="text" placeholder="Lastname" name="lname" /></td>
+        <td colspan="2"><input type="submit" name="submit"></td>
+    </tr>
+</table>
+</form>
+</body>
+</html>

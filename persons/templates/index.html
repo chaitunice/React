@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+{% include 'header.html' %}
+
+<h1>Hello Chaitu!</h1>
+<p>Welcome to our first Django project!</p>
+
+<h3>Persons List:</h3>
+<p>
+    <table border="1">
+        <tr>
+            <td>ID</td>
+            <td>First name</td>
+            <td>Last Name</td>
+            <td>Action</td>
+        </tr>
+        {% for i in data %}
+        <!-- Showing the cycle tag below -->
+        <tr style="background-color: {% cycle '#00FFFF' '#C0C0C0' %};">
+            <td> <a href="update/{{ i.id }}"> {{ i.id }} </a> </td>
+            <td> {{ i.fname }} </td>
+            <td> {{ i.lname }} </td>
+            <td> <a href="delete/{{ i.id }}">Delete</a> </td>
+        </tr>
+        {% endfor %}
+    </table>
+       <p><a href="add/">Add Person</a></p>
+  
+</p>
+</body>
+</html>
+<!-- including another page by providing any variables there with values -->
+{% include 'footer.html' with message="Bye....." %}
